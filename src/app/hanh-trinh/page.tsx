@@ -2,9 +2,12 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import WorldMap from "@/components/worldmap";
 import styles from "./hanhtrinh.module.css";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// 🧠 Import WorldMap theo kiểu dynamic để tắt SSR
+const WorldMap = dynamic(() => import("@/components/worldmap"), { ssr: false });
 
 export default function HanhTrinhPage() {
   return (
