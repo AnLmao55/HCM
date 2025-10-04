@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://file.thanhuyhanoi.vn/thanhuy/public/0/1/2024/6/5/50005507/3aa5ef70-baa9-4765-9aa3-6bf333cc015e.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-start; /* Đẩy overlay sang trái */
+  align-items: center;
+  position: relative;
+}
+
+
+.overlay {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 3rem 4rem;
+  min-width: 650px;
+  color: rgb(255, 255, 255);
+  text-align: left; /* 👈 chữ về bên trái */
+  border-radius: 0 12px 12px 0;
+  padding-right: 10rem; /* Tăng padding bên phải để tạo khoảng cách */
+}
+
+/* Hoặc nếu dùng @import */
+
+
+.overlay h1 {
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+.overlay p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.scrollBtn {
+  background-color: #ff3131;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out , background-color 0.3s ease-in-out;
+}
+
+.scrollBtn:hover {
+  transform: scale(1.1) !important;
+  
+}
+
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 2rem;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.55); /* nền mờ toàn khối khi màn nhỏ */
+  }
+
+  .overlay h1 {
+    font-size: 2.2rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+}

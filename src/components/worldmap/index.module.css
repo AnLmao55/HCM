@@ -1,0 +1,94 @@
+.mapContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Timeline */
+.timelineContainer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.75rem 1rem;
+  overflow-x: auto;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+}
+.timelineContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.timelineContainer::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.timelineItem {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 2px solid currentColor;
+  border-radius: 9999px;
+  background: white;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.timelineItem:hover {
+  transform: scale(1.08);
+  background: linear-gradient(90deg, #f3f4f6, #e5e7eb);
+}
+.timelineItem.active {
+  color: white !important;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Ghi đè khung nội dung popup mặc định của Leaflet */
+.leaflet-popup-content {
+  max-width: 600px !important; /* 🟡 quan trọng */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ✅ Tuỳ chỉnh container bên trong bạn */
+.popupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 100%;               /* quan trọng để khớp max-width bên ngoài */
+  background: #ffffff;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.popupImg {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.popupContent h3 {
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.popupDate {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.35rem;
+}
+
+.popupContent p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+}
