@@ -16,18 +16,7 @@
 }
 
 /* phần bọc map */
-.mapWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;              /* map chiếm 90% màn hình */
-  height: 83vh;            /* chiều cao linh hoạt */
-  margin: 0 auto 2rem auto;/* canh giữa khối map */
-  overflow: hidden;
-  background: #f5f5f5;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
+
 
 /* map container bên trong leaflet thường auto fit */
 .mapWrapper :global(.leaflet-container) {

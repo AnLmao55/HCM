@@ -57,7 +57,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 6/7/1911, tàu đến Marseille — một cảng lớn ở miền Nam nước Pháp. Đây là điểm mở đầu hành trình người thanh niên Việt Nam tiếp cận châu Âu.",
     lat: 43.296482,
     lng: 5.36978,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Marseille_port.jpg"
+    img: "https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f48e23810ac6/112019/cangmacxay1_2019111117145.jpg"
   },
   {
     id: "le-havre-1911",
@@ -67,7 +67,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 15/7/1911, tàu cập bến Le Havre, Pháp. Đây là điểm cuối của chặng biển đầu tiên, từ đó Nguyễn Tất Thành bắt đầu quá trình đi bộ, tàu hỏa, lao động khắp châu Âu để tìm hiểu thực tế.",
     lat: 49.49437,
     lng: 0.107929,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Le_Havre_harbor.jpg"
+    img: "https://congnghieptauthuyvietnam.vn/upload/images/2022/So%20thang%206-2022/2022_T6_VHDL_1.jpg"
   },
 
   // 🧭 Chặng 2: Vòng quanh châu Phi
@@ -79,7 +79,7 @@ export const journeyData: JourneyStop[] = [
       "Đầu năm 1912, Nguyễn Tất Thành xin việc trên một tàu biển chạy vòng quanh châu Phi, cập các cảng Tây Ban Nha, Bồ Đào Nha, Algérie, Tunisie, Congo, Dahomey, Guinée, Sénégal… Qua đó, Người quan sát thực trạng người lao động, áp bức thuộc địa và hình thành ý thức đấu tranh giải phóng dân tộc. (Chưa tìm được ngày tháng cụ thể cho từng cảng).",
     lat: 14.716677, // ví dụ: Dakar (Senegal)
     lng: -17.467686,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Dakar_port.jpg"
+    img: "https://media.baothaibinh.com.vn/upload/news/6_2021/chu_tich_ho_chi_minh_voi_nhung_cong_viec_da_trai_qua_trong_hanh_trinh_cuu_nuoc_14451104062021.jpg"
   },
 
   {
@@ -90,7 +90,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 25/12/1912, Nguyễn Ái Quốc đến New York, Mỹ, sau các điểm dừng tại Martinique, Uruguay, Argentina theo lộ trình giữa Pháp – Mỹ – Anh. Ở Mỹ, Người làm vườn ở Brooklyn, làm đầu bếp tại khách sạn Omni Parker House để sống và quan sát xã hội Mỹ.",
     lat: 40.712776,
     lng: -74.005974,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/New_York_skyline.jpg"
+    img: "https://oldnycphotos.com/cdn/shop/products/TimesSquare1912LSouthCU040623web_720x576.jpg?v=1680783470"
   },
   {
     id: "london-1913",
@@ -100,7 +100,7 @@ export const journeyData: JourneyStop[] = [
       "Từ năm 1913 đến 1917, tại Anh, Nguyễn Ái Quốc làm nhiều nghề: khách sạn Drayton Court, Carlton; công nhân cảng; quét tuyết trường học. Ông thường đến Thư viện Anh để đọc sách triết học, lý luận, tiếp cận tư tưởng tiến bộ của Anh quốc.",
     lat: 51.507351,
     lng: -0.127758,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/London_skyline.jpg"
+    img: "https://c8.alamy.com/comp/CPJ7M3/the-national-gallery-at-the-trafalgar-square-in-london-1913-CPJ7M3.jpg"
   },
   {
     id: "paris-1917",
@@ -110,7 +110,7 @@ export const journeyData: JourneyStop[] = [
       "Từ cuối năm 1917 trở về Pháp, Nguyễn Ái Quốc tích cực hoạt động phong trào người Việt kiều, gia nhập Đảng Xã hội Pháp, tham gia sáng lập Đảng Cộng sản Pháp (1920), lập báo **Le Paria** (Người cùng khổ) năm 1922.",
     lat: 48.856613,
     lng: 2.352222,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Paris_street.jpg"
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRANRI0L_FkMKvadJxCexUT8bm5mnP5UIXfYQ&s"
   },
   {
     id: "petrograd-1923",
@@ -120,7 +120,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 30/6/1923, sau khi rời Pháp qua Đức – Hà Lan, Nguyễn Ái Quốc đến Petrograd (Saint Petersburg), bắt đầu hòa nhập hoạt động ở Liên Xô, tham gia Quốc tế Cộng sản, học lý luận phương Đông.",
     lat: 59.93428,
     lng: 30.335099,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Saint_Petersburg.jpg"
+    img: "https://c8.alamy.com/comp/2HK3C4F/one-of-petrograds-well-built-railway-stations-russia-petrograd-st-petersburg-1923-2HK3C4F.jpg"
   },
   {
     id: "moscow-1924",
@@ -130,7 +130,7 @@ export const journeyData: JourneyStop[] = [
       "Giai đoạn 1924–1927, Nguyễn Ái Quốc học tại Trường Quốc tế Lênin, tham dự Đại hội V Quốc tế Cộng sản (1924), soạn thảo các luận đề về cách mạng thuộc địa.",
     lat: 55.755825,
     lng: 37.617298,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Moscow_cityscape.jpg"
+    img: "https://c8.alamy.com/comp/GG2BMP/lenins-funeral-in-moscow-1924-ussr-GG2BMP.jpg"
   },
   {
     id: "guangzhou-1924",
@@ -140,7 +140,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 11/11/1924, Nguyễn Ái Quốc đến Quảng Châu, Trung Quốc — bắt đầu tổ chức hoạt động cách mạng, mở lớp huấn luyện cán bộ, ra báo Thanh Niên (21/6/1925).",
     lat: 23.12911,
     lng: 113.264385,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Guangzhou_skyline.jpg"
+    img: "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2025/1/18/21a0061d8de44cd6832848e9396d46af"
   },
   {
     id: "bangkok-1928",
@@ -150,7 +150,7 @@ export const journeyData: JourneyStop[] = [
       "Tháng 7/1928, Nguyễn Ái Quốc từ Liên Xô đi qua Paris, Bỉ, Đức rồi lên tàu thủy từ Naples tới Xiêm (Thái Lan), hoạt động trong cộng đồng kiều bào vùng Đông Bắc Thái.",
     lat: 13.756331,
     lng: 100.501765,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Bangkok_skyline.jpg"
+    img: "https://c8.alamy.com/comp/2J2EWB6/bangkok-thailand-january-4-2010-phra-tinang-aporn-phimok-prasat-pavillion-in-the-grand-palace-in-bangkok-2J2EWB6.jpg"
   },
   {
     id: "hong-kong-1931",
@@ -160,7 +160,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 6/6/1931, Nguyễn Ái Quốc bị bắt tại Hồng Kông, giam 18 tháng tại nhà tù Victoria, đến 28/12/1932 được thả, tiếp tục hoạt động đến 1933.",
     lat: 22.3193039,
     lng: 114.1693611,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Hong_Kong_harbor.jpg"
+    img: "https://bhd.1cdn.vn/2021/06/04/files-library-images-ttxvn_0406_hong_kong.jpg"
   },
   {
     id: "shanghai-1933",
@@ -170,7 +170,7 @@ export const journeyData: JourneyStop[] = [
       "Cuối năm 1933, Nguyễn Ái Quốc rời Hồng Kông bằng đường biển, đến Vladivostok rồi đi tàu hỏa đến Matxcơva. Ông từng hoạt động tại Thượng Hải trong giai đoạn 1930–1933.",
     lat: 31.230416,
     lng: 121.473701,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Shanghai_skyline.jpg"
+    img: "https://i0.wp.com/www.7dayadventurer.com/wp-content/uploads/2021/06/63D340E7-5ABA-45AA-B845-C8FB11A7C73A.png"
   },
   {
     id: "moscow-1934",
@@ -180,7 +180,7 @@ export const journeyData: JourneyStop[] = [
       "Giai đoạn 1934–1938, Nguyễn Ái Quốc học ở Trường Quốc tế Lênin, làm việc tại Viện Nghiên cứu các vấn đề dân tộc và thuộc địa.",
     lat: 55.755825,
     lng: 37.617298,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Moscow_monument.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/4/43/Triumphal_Arch_of_Moscow_1934.jpg"
   },
   {
     id: "queling-1938",
@@ -190,7 +190,7 @@ export const journeyData: JourneyStop[] = [
       "Ngày 29/9/1938, Nguyễn Ái Quốc rời Matxcơva đến Trung Quốc, liên lạc hợp tác với Bát Lộ Quân và các văn phòng cách mạng tại Quế Lâm.",
     lat: 25.273566,
     lng: 110.29002,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Guilin_landscape.jpg"
+    img: "https://spirit.vietnamairlines.com/old/tintuc/NewsDK/11625/637249835213699906.jpeg"
   },
   {
     id: "kunming-1939",
@@ -200,7 +200,7 @@ export const journeyData: JourneyStop[] = [
       "Trong thời gian từ 1938 đến 1940, Nguyễn Ái Quốc hoạt động ở nhiều tỉnh phía Nam Trung Quốc, thường xuyên có mặt tại Côn Minh để tổ chức và liên lạc cách mạng.",
     lat: 25.03889,
     lng: 102.71833,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Kunming_city.jpg"
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT56SpgalS8Ca2R3IMAVZgShUr8mdQE-7L65g&s"
   },
   {
     id: "pacbo-1941",
@@ -210,6 +210,6 @@ export const journeyData: JourneyStop[] = [
       "Ngày 28/1/1941, sau 30 năm bôn ba, Nguyễn Ái Quốc trở về nước qua cột mốc 108, khu vực Pác Bó (Cao Bằng). Tại đây, Người triển khai phong trào cách mạng, chuẩn bị cho Cách mạng Tháng Tám.",
     lat: 22.8509,
     lng: 106.2977,
-    img: "https://upload.wikimedia.org/wikipedia/commons/…/Pac_Bo_Cave.jpg"
+    img: "https://nhandan.vn/special/ve-Pac-Bo-nho-Bac-Ho/assets/EoBeQGHSiR/ba-c-h-th-m-pa-c-bo-2-1961-1-2048x1360.jpg"
   }
 ];

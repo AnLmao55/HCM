@@ -4,8 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-
 import { Icon, LatLngExpression, Marker as LeafletMarker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { journeyData, JourneyStop } from "@/data/journey";
-import { useState, useMemo, memo, useEffect, useRef } from "react";
+import { useState, useMemo, memo, useEffect, useRef, useCallback } from "react";
 import styles from "./index.module.css";
+import L from "leaflet";
 
 const markerIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
@@ -59,47 +60,86 @@ const LeafletMap = memo(function LeafletMap({
   selected,
   prev,
   onMarkerReady,
+  onAnimationEnd,
+  closeAllPopups,
 }: {
   selected: JourneyStop | null;
   prev: JourneyStop | null;
   onMarkerReady: (id: string, marker: LeafletMarker) => void;
+  onAnimationEnd: (id: string) => void;
+  closeAllPopups: () => void;
 }) {
   const map = useMap();
+  const animatedLineRef = useRef<L.Polyline | null>(null);
 
   useEffect(() => {
-  if (selected && prev) {
-    const start: LatLngExpression = [prev.lat, prev.lng];
-    const end: LatLngExpression = [selected.lat, selected.lng];
-    const path = createSmoothCurve(start, end, 5, 300);
+    if (selected && prev) {
+      // 🔸 Đóng popup trước khi bắt đầu animation
+      closeAllPopups();
 
-    let i = 0;
-    const speed = 8;
-    const anim = setInterval(() => {
-      if (i < path.length) {
-        // 🟡 Áp dụng offset khi pan
-        const point = map.project(path[i]);
-        const offsetY = 150; // Dịch lên 150px để giữ chỗ cho popup
-        const adjustedPoint = point.subtract([0, offsetY]);
-        const adjustedLatLng = map.unproject(adjustedPoint);
-        map.panTo(adjustedLatLng, { animate: false });
+      const start: LatLngExpression = [prev.lat, prev.lng];
+      const end: LatLngExpression = [selected.lat, selected.lng];
+      const fullPath = createSmoothCurve(start, end, 5, 300);
 
-        i++;
-      } else {
-        clearInterval(anim);
+      if (animatedLineRef.current) {
+        map.removeLayer(animatedLineRef.current);
+        animatedLineRef.current = null;
       }
-    }, speed);
-    return () => clearInterval(anim);
-  } else if (selected && !prev) {
-    // 🟡 Khi lần đầu chọn mốc → cũng áp dụng offset
-    const point = map.project([selected.lat, selected.lng]);
-    const offsetY = -150;
-    const adjustedPoint = point.subtract([0, offsetY]);
-    const adjustedLatLng = map.unproject(adjustedPoint);
 
-    map.flyTo(adjustedLatLng, 5, { duration: 2 });
-  }
-}, [selected, prev, map]);
+      const line = L.polyline([], {
+        color: "red", // giữ hiệu ứng trắng cũ
+        weight: 7,
+        opacity: 3,
+        dashArray: "1 12",
+      }).addTo(map);
+      animatedLineRef.current = line;
 
+      let i = 0;
+      const total = fullPath.length;
+
+      const draw = () => {
+        if (!animatedLineRef.current) return;
+        if (i < total) {
+          const segment = fullPath.slice(0, i);
+          animatedLineRef.current.setLatLngs(segment);
+
+          // pan map theo điểm hiện tại
+          const point = map.project(fullPath[i]);
+          const offsetY = 150;
+          const adjustedPoint = point.subtract([0, offsetY]);
+          const adjustedLatLng = map.unproject(adjustedPoint);
+          map.panTo(adjustedLatLng, { animate: false });
+
+          i++;
+          requestAnimationFrame(draw);
+        } else {
+          // animation kết thúc → mở popup
+          onAnimationEnd(selected.id);
+        }
+      }
+
+      requestAnimationFrame(draw);
+
+      return () => {
+        if (animatedLineRef.current) {
+          map.removeLayer(animatedLineRef.current);
+          animatedLineRef.current = null;
+        }
+      };
+    } else if (selected && !prev) {
+      // Lần đầu chọn điểm → không vẽ đường
+      closeAllPopups();
+      const point = map.project([selected.lat, selected.lng]);
+      const offsetY = -150;
+      const adjustedPoint = point.subtract([0, offsetY]);
+      const adjustedLatLng = map.unproject(adjustedPoint);
+      map.flyTo(adjustedLatLng, 5, { duration: 2 });
+
+      setTimeout(() => {
+        onAnimationEnd(selected.id);
+      }, 2000);
+    }
+  }, [selected, prev, map, onAnimationEnd, closeAllPopups]);
 
   return (
     <>
@@ -110,7 +150,7 @@ const LeafletMap = memo(function LeafletMap({
           <Polyline
             key={point.id}
             positions={positions}
-            pathOptions={{ color: getColor(i), weight: 3, opacity: 0.8 }}
+            pathOptions={{ color: getColor(i), weight: 3, opacity: 0.5 }}
           />
         );
       })}
@@ -151,12 +191,9 @@ export default function WorldMap() {
   const [prev, setPrev] = useState<JourneyStop | null>(null);
   const markersRef = useRef<Record<string, LeafletMarker>>({});
 
-  useEffect(() => {
+  const closeAllPopups = useCallback(() => {
     Object.values(markersRef.current).forEach((m) => m.closePopup());
-    if (selected && markersRef.current[selected.id]) {
-      markersRef.current[selected.id].openPopup();
-    }
-  }, [selected]);
+  }, []);
 
   const handleSelect = (point: JourneyStop) => {
     setPrev(selected);
@@ -167,7 +204,12 @@ export default function WorldMap() {
     markersRef.current[id] = marker;
   };
 
-  // 📅 Gom nhóm theo năm → mảng { year: string, stops: JourneyStop[] }
+  const handleAnimationEnd = useCallback((id: string) => {
+    if (markersRef.current[id]) {
+      markersRef.current[id].openPopup();
+    }
+  }, []);
+
   const timelineGroups = useMemo(() => {
     const groups: Record<string, JourneyStop[]> = {};
     journeyData.forEach((p) => {
@@ -183,10 +225,10 @@ export default function WorldMap() {
 
   return (
     <div className="w-full flex flex-col gap-4">
-      <div className="w-full h-[930px] rounded-lg overflow-hidden shadow-lg border border-gray-200">
+      <div className="w-full h-[630px] rounded-lg overflow-hidden shadow-lg border border-gray-200">
         <MapContainer
-          center={[20, 0]}
-          zoom={3}
+          center={[30, 20]}
+          zoom={2.5}
           scrollWheelZoom={true}
           className={styles.mapContainer}
         >
@@ -194,17 +236,23 @@ export default function WorldMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <LeafletMap selected={selected} prev={prev} onMarkerReady={handleMarkerReady} />
+          <LeafletMap
+            selected={selected}
+            prev={prev}
+            onMarkerReady={handleMarkerReady}
+            onAnimationEnd={handleAnimationEnd}
+            closeAllPopups={closeAllPopups}
+          />
         </MapContainer>
       </div>
 
-      {/* 🕰️ Timeline theo nhóm năm → hiển thị từng mốc chi tiết */}
+      {/* Timeline giữ nguyên */}
       <div className={styles.timelineContainer}>
         {timelineGroups.map((group, groupIdx) => (
           <div key={group.year} className="flex flex-col gap-2">
             <div className="font-bold text-sm text-gray-700">{group.year}:</div>
             <div className="flex gap-2 flex-wrap">
-              {group.stops.map((stop, idx) => {
+              {group.stops.map((stop) => {
                 const isActive = selected?.id === stop.id;
                 const color = getColor(groupIdx);
                 return (
