@@ -90,7 +90,7 @@ export const journeyData: JourneyStop[] = [
       "Tại các nước tư bản phát triển như Mỹ, Người nhận ra khẩu hiệu 'Tự do, Bình đẳng, Bác ái' chỉ là hình thức. Người khẳng định chỉ có thay đổi tận gốc chế độ xã hội bất công thì nhân dân mới thực sự được giải phóng.",
     lat: 40.712776,
     lng: -74.005974,
-    img: "https://d3i6fh83elv35t.cloudfront.net/static/2018/11/RTX15I3Y-1024x683.jpg"
+    img: "https://239days.com/wp-content/uploads/2012/11/manhattan-1931-up-1614153788.jpg"
   },
   {
     id: "london-1913",
