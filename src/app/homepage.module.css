@@ -1,36 +1,118 @@
-.intro {
-  text-align: center;
-  padding: 4rem 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+.introSection {
+  background-color: #f9fafb;
+  padding: 4rem 1rem;
+  scroll-margin-top: 80px; /* tránh che bởi Navbar */
 }
 
-.intro h2 {
+.introContent {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.audioPlayer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.introText {
+  flex: 1;
+}
+
+.introText h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #b22222;
 }
 
-.intro p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+.introText p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-.buttons {
+.introImage {
+  flex: 1;
+  text-align: center;
+}
+
+.image {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+  
+.aiSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
 }
 
-.btn {
-  background-color: #e53935;
-  color: white;
-  padding: 0.7rem 1.4rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.2s;
+.aiSummary {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: #f0f4f8;
+  border-left: 4px solid #4a90e2;
 }
 
-.btn:hover {
-  background-color: #c62828;
+.introHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ttsControls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.ttsButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.ttsButton:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stopButton {
+  background-color: #fde8e8;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+
+@media (max-width: 768px) {
+  .introContent {
+    flex-direction: column;
+  }
 }

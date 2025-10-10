@@ -3,14 +3,12 @@
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
 
-export default function HeroSection() {
-  const handleScroll = () => {
-    const nextSection = document.getElementById("timeline");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+interface HeroSectionProps {
+  onExploreClick?: () => void;
+}
 
+// 👇 Thêm destructuring props ở đây
+export default function HeroSection({ onExploreClick }: HeroSectionProps) {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.overlay}>
@@ -33,7 +31,7 @@ export default function HeroSection() {
 
         <motion.button
           className={styles.scrollBtn}
-          onClick={handleScroll}
+          onClick={onExploreClick} // ✅ Gọi prop ở đây
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}

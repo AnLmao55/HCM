@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['bbt.1cdn.vn'], // 👈 thêm domain chứa ảnh ngoài
+  },
 };
 
 export default nextConfig;

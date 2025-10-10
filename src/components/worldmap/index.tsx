@@ -1,12 +1,31 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
-import { Icon, LatLngExpression, Marker as LeafletMarker } from "leaflet";
+import { Icon, LatLngExpression, Marker as LeafletMarker, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { journeyData, JourneyStop } from "@/data/journey";
+import { journeyData as rawJourneyData, JourneyStop } from "@/data/journey"; // Rename to avoid conflict
 import { useState, useMemo, memo, useEffect, useRef, useCallback } from "react";
 import styles from "./index.module.css";
 import L from "leaflet";
+
+// Define the mapping for tu-tuong stages based on years
+const tuTuongStageMapping: Record<string, string> = {
+  "1911": "stage-1",
+  "1912-1913": "stage-2",
+  "1913-1917": "stage-3",
+  "1917-1923": "stage-4",
+  "1924-1927": "stage-5",
+  "1927-1929": "stage-6",
+  "1929-1933": "stage-7",
+  "1933-1938": "stage-8",
+  "1938-1940": "stage-9",
+  "1940-1941": "stage-10",
+};
+
+// Extend JourneyStop type to include tuTuongStageId
+interface ExtendedJourneyStop extends JourneyStop {
+  tuTuongStageId?: string;
+}
 
 const markerIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
@@ -62,12 +81,14 @@ const LeafletMap = memo(function LeafletMap({
   onMarkerReady,
   onAnimationEnd,
   closeAllPopups,
+  extendedJourneyData, // Added prop for extended data
 }: {
   selected: JourneyStop | null;
   prev: JourneyStop | null;
   onMarkerReady: (id: string, marker: LeafletMarker) => void;
   onAnimationEnd: (id: string) => void;
   closeAllPopups: () => void;
+  extendedJourneyData: ExtendedJourneyStop[]; // Type for extended data
 }) {
   const map = useMap();
   const animatedLineRef = useRef<L.Polyline | null>(null);
@@ -143,8 +164,8 @@ const LeafletMap = memo(function LeafletMap({
 
   return (
     <>
-      {journeyData.slice(0, -1).map((point, i) => {
-        const next = journeyData[i + 1];
+      {extendedJourneyData.slice(0, -1).map((point, i) => { // Use extendedJourneyData
+        const next = extendedJourneyData[i + 1]; // Use extendedJourneyData
         const positions = createSmoothCurve([point.lat, point.lng], [next.lat, next.lng], 5);
         return (
           <Polyline
@@ -155,7 +176,7 @@ const LeafletMap = memo(function LeafletMap({
         );
       })}
 
-      {journeyData.map((point) => (
+      {extendedJourneyData.map((point) => ( // Use extendedJourneyData
         <Marker
           key={point.id}
           position={[point.lat, point.lng]}
@@ -177,6 +198,14 @@ const LeafletMap = memo(function LeafletMap({
                 <h3>{point.title}</h3>
                 <div className={styles.popupDate}>{point.year}</div>
                 <p>{point.description}</p>
+                {point.tuTuongStageId && ( // Conditionally render button
+                  <button
+                    onClick={() => window.open(`/tu-tuong#${point.tuTuongStageId}`, '_blank')}
+                    className={styles.tuTuongButton}
+                  >
+                    Xem Tư tưởng
+                  </button>
+                )}
               </div>
             </div>
           </Popup>
@@ -187,15 +216,15 @@ const LeafletMap = memo(function LeafletMap({
 });
 
 export default function WorldMap() {
-  const [selected, setSelected] = useState<JourneyStop | null>(null);
-  const [prev, setPrev] = useState<JourneyStop | null>(null);
+  const [selected, setSelected] = useState<ExtendedJourneyStop | null>(null); // Changed type
+  const [prev, setPrev] = useState<ExtendedJourneyStop | null>(null);     // Changed type
   const markersRef = useRef<Record<string, LeafletMarker>>({});
 
   const closeAllPopups = useCallback(() => {
     Object.values(markersRef.current).forEach((m) => m.closePopup());
   }, []);
 
-  const handleSelect = (point: JourneyStop) => {
+  const handleSelect = (point: ExtendedJourneyStop) => { // Changed type
     setPrev(selected);
     setSelected(point);
   };
@@ -210,9 +239,22 @@ export default function WorldMap() {
     }
   }, []);
 
-  const timelineGroups = useMemo(() => {
-    const groups: Record<string, JourneyStop[]> = {};
-    journeyData.forEach((p) => {
+  // Extend rawJourneyData with tuTuongStageId
+  const extendedJourneyData: ExtendedJourneyStop[] = useMemo(() => {
+    return rawJourneyData.map(point => {
+      // Find the stage key that is included in the point's year string
+      const matchingStageKey = Object.keys(tuTuongStageMapping).find(key => point.year.includes(key));
+      
+      return {
+        ...point,
+        tuTuongStageId: matchingStageKey ? tuTuongStageMapping[matchingStageKey] : undefined,
+      };
+    });
+  }, []); // rawJourneyData is a constant, so this memoizes once
+
+  const timelineGroups = useMemo(() => { // Use extendedJourneyData for timeline groups
+    const groups: Record<string, ExtendedJourneyStop[]> = {}; // Changed type
+    extendedJourneyData.forEach((p) => {
       const match = p.year.match(/\d{4}/);
       const year = match ? match[0] : "Khác";
       if (!groups[year]) groups[year] = [];
@@ -221,7 +263,7 @@ export default function WorldMap() {
     return Object.entries(groups)
       .map(([year, stops]) => ({ year, stops }))
       .sort((a, b) => Number(a.year) - Number(b.year));
-  }, []);
+  }, [extendedJourneyData]); // Dependency on extendedJourneyData
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -242,6 +284,7 @@ export default function WorldMap() {
             onMarkerReady={handleMarkerReady}
             onAnimationEnd={handleAnimationEnd}
             closeAllPopups={closeAllPopups}
+            extendedJourneyData={extendedJourneyData} // Pass extended data to LeafletMap
           />
         </MapContainer>
       </div>

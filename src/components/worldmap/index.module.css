@@ -92,3 +92,21 @@
   color: #374151;
   margin: 0;
 }
+
+.tuTuongButton {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #c8102e; /* Màu đỏ chủ đạo */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.tuTuongButton:hover {
+  background-color: #a20c24;
+  transform: translateY(-2px);
+}

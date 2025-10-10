@@ -40,14 +40,14 @@ export default function Navbar() {
             Trang chủ
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href="/gioi-thieu"
             className={pathname === "/gioi-thieu" ? styles.active : ""}
           >
             Giới thiệu
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             href="/hanh-trinh"
@@ -56,14 +56,14 @@ export default function Navbar() {
             Hành trình
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href="/cau-chuyen"
             className={pathname === "/cau-chuyen" ? styles.active : ""}
           >
             Câu chuyện
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             href="/tu-tuong"
