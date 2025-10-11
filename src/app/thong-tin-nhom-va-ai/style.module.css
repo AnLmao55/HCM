@@ -1,0 +1,299 @@
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem;
+	min-height: calc(100vh - 200px);
+}
+
+.container h1 {
+	margin-top: 4rem;
+	font-size: 2.5rem;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 3rem;
+	color: #333;
+}
+
+.teamGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.memberCard {
+	background: #f8f9fa;
+	border: 1px solid #e9ecef;
+	border-radius: 12px;
+	padding: 2rem;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memberCard:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.memberCard h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2c3e50;
+	margin-bottom: 0.5rem;
+}
+
+.mssv {
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: #3498db;
+	margin-bottom: 0.5rem;
+}
+
+.function {
+	font-size: 1rem;
+	color: #7f8c8d;
+	font-style: italic;
+}
+
+/* Tech Stack Styles */
+.techTitle {
+	font-size: 2rem;
+	font-weight: 600;
+	text-align: center;
+	margin: 4rem 0 2rem 0;
+	color: #2c3e50;
+	border-bottom: 3px solid #3498db;
+	padding-bottom: 1rem;
+}
+
+.techGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.techCard {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border-radius: 12px;
+	padding: 2rem;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.techCard:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.techCard h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	color: #ffffff;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	padding-bottom: 0.5rem;
+}
+
+.techList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.techList li {
+	background: rgba(255, 255, 255, 0.1);
+	margin: 0.5rem 0;
+	padding: 0.5rem 1rem;
+	border-radius: 6px;
+	font-size: 0.9rem;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* AI Resources Styles */
+.aiTitle {
+	font-size: 2rem;
+	font-weight: 600;
+	text-align: center;
+	margin: 4rem 0 2rem 0;
+	color: #2c3e50;
+	border-bottom: 3px solid #e74c3c;
+	padding-bottom: 1rem;
+}
+
+.aiGrid {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	margin-top: 2rem;
+}
+
+.aiCategory {
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 2rem;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+	border: 1px solid #f0f0f0;
+}
+
+.aiCategoryTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2c3e50;
+	margin-bottom: 1.5rem;
+	text-align: center;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #ecf0f1;
+}
+
+.aiResourceGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 1.5rem;
+}
+
+.aiResourceCard {
+	background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+	color: white;
+	border-radius: 12px;
+	padding: 1.5rem;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.aiResourceCard::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.1) 0%,
+		rgba(255, 255, 255, 0.05) 100%
+	);
+	pointer-events: none;
+}
+
+.aiResourceCard:hover {
+	transform: translateY(-5px) scale(1.02);
+	box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
+}
+
+.aiResourceHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 1rem;
+	position: relative;
+	z-index: 1;
+}
+
+.aiResourceHeader h4 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin: 0;
+	line-height: 1.3;
+	flex: 1;
+}
+
+.aiResourceType {
+	background: rgba(255, 255, 255, 0.2);
+	padding: 0.3rem 0.8rem;
+	border-radius: 20px;
+	font-size: 0.8rem;
+	font-weight: 500;
+	margin-left: 1rem;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.aiResourceDescription {
+	font-size: 0.95rem;
+	line-height: 1.5;
+	margin-bottom: 1.5rem;
+	opacity: 0.95;
+	position: relative;
+	z-index: 1;
+}
+
+.aiResourceLink {
+	display: inline-flex;
+	align-items: center;
+	color: white;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.9rem;
+	background: rgba(255, 255, 255, 0.15);
+	padding: 0.6rem 1.2rem;
+	border-radius: 25px;
+	transition: all 0.2s ease;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	position: relative;
+	z-index: 1;
+}
+
+.aiResourceLink:hover {
+	background: rgba(255, 255, 255, 0.25);
+	transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+	.teamGrid {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.memberCard {
+		padding: 1.5rem;
+	}
+
+	.techGrid {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.techCard {
+		padding: 1.5rem;
+	}
+
+	.techTitle {
+		font-size: 1.5rem;
+		margin: 3rem 0 1.5rem 0;
+	}
+
+	.aiTitle {
+		font-size: 1.5rem;
+		margin: 3rem 0 1.5rem 0;
+	}
+
+	.aiCategory {
+		padding: 1.5rem;
+	}
+
+	.aiResourceGrid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.aiResourceCard {
+		padding: 1.2rem;
+	}
+
+	.aiResourceHeader {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.aiResourceType {
+		align-self: flex-start;
+		margin-left: 0;
+	}
+}

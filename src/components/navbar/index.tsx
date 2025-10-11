@@ -72,6 +72,14 @@ export default function Navbar() {
             Tư tưởng
           </Link>
         </li>
+        <li>
+          <Link
+            href="/thong-tin-nhom-va-ai"
+            className={pathname === "/thong-tin-nhom-va-ai" ? styles.active : ""}
+          >
+            Thông tin nhóm & AI
+          </Link>
+        </li>
       </ul>
     </motion.nav>
   );
